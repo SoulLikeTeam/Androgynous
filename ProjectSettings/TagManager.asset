@@ -11,12 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - NoPassing
+  - Wall
+  - PlayerMovement
+  - EnemyMovenment
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 510167289
+    locked: 0
+  - name: Back
+    uniqueID: 1647712333
+    locked: 0
+  - name: Agent
+    uniqueID: 2856343577
+    locked: 0
+  - name: Front
+    uniqueID: 177907779
     locked: 0

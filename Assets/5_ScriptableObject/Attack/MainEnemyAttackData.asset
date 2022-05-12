@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 176f23907aaa97148a74a648bdd49ce8, type: 3}
+  m_Name: MainEnemyAttackData
+  m_EditorClassIdentifier: 
+  afterCastDelay: 3
+  assailCount: 1
+  attackDatas:
+  - animationName: Attack1
+    boxMin: {x: 0, y: 2}
+    boxMax: {x: 3, y: 1}
+    damage: 26
+    attackTime: 0
+    criticalChance: 10
+    staggerValue: 10
+    knockBackValue: 10
+  - animationName: Attack2
+    boxMin: {x: 0, y: 2}
+    boxMax: {x: 3, y: 1}
+    damage: 1
+    attackTime: 0
+    criticalChance: 10
+    staggerValue: 10
+    knockBackValue: 10
+  - animationName: Attack3
+    boxMin: {x: 0, y: 2}
+    boxMax: {x: 2.3, y: 2.5}
+    damage: 9
+    attackTime: 0
+    criticalChance: 10
+    staggerValue: 10
+    knockBackValue: 10
