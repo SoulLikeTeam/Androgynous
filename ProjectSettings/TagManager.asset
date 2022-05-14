@@ -17,7 +17,7 @@ TagManager:
   - Wall
   - PlayerMovement
   - EnemyMovenment
-  - 
+  - LightMap
   - 
   - 
   - 
@@ -52,4 +52,13 @@ TagManager:
     locked: 0
   - name: Front
     uniqueID: 177907779
+    locked: 0
+  - name: LightMap
+    uniqueID: 1872746127
+    locked: 0
+  - name: Light
+    uniqueID: 665316739
+    locked: 0
+  - name: UI
+    uniqueID: 2660534455
     locked: 0

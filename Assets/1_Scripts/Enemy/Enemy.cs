@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Enemy : MonoBehaviour ,IAgent ,IHittable ,IKnockBack
+public class Enemy : PoolableMono ,IAgent ,IHittable ,IKnockBack
 {
     [SerializeField]
     private EnemyDataSO _enemyData;
@@ -63,6 +63,9 @@ public class Enemy : MonoBehaviour ,IAgent ,IHittable ,IKnockBack
         _enemyAttack = GetComponent<EnemyAttack>();
         _enemyAnimation = GetComponentInChildren<EnemyAnimation>();
     }
+    private void Start() {
+        Health = _enemyData.maxHealth;
+    }
     public void PerformAttack(bool value,int mode)
     {
         if(!_isDead)
@@ -70,9 +73,16 @@ public class Enemy : MonoBehaviour ,IAgent ,IHittable ,IKnockBack
             _enemyAttack.OnAttack(mode);
         }
     }
-    private void Start() {
+    public override void Reset()
+    {
         Health = _enemyData.maxHealth;
+        _isDead = false;
+        _agentMovement.enabled = true;
+        _enemyAttack.Reset();
     }
 
-    
+    public void Die()
+    {
+        PoolManager.Instance.Push(this);
+    }
 }

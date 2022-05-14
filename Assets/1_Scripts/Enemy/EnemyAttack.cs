@@ -27,6 +27,10 @@ public abstract class EnemyAttack : Attack
         _enemyAiBrain = GetComponent<EnemyAiBrain>();
         _layer = LayerMask.GetMask("Player");
     }
+    public void Reset()
+    {
+        StopCoroutine(WaitBeforeAttackCoroutine(1));
+    }
     public Transform GetTarget()
     {
         return _enemyAiBrain.target;
