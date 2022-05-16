@@ -9,6 +9,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Start() {
         SpawnEnemy();
+        GameManager.Instance.SpawnEnemy += SpawnEnemy;
     }
     public void SpawnEnemy()
     {
@@ -19,4 +20,6 @@ public class SpawnManager : MonoBehaviour
             ob.gameObject.transform.position = trm.position;
         }
     }
+
+    //public void 
 }

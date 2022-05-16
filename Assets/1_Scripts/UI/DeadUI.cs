@@ -69,7 +69,7 @@ public class DeadUI : MonoBehaviour
         yield return new WaitForSeconds(1f);
         _text.color = Color.green;
 
-
+        
         int i = 0;
         while(i<3)
         {
@@ -83,8 +83,12 @@ public class DeadUI : MonoBehaviour
             yield return new WaitForSeconds(_reloadTime);
             i++;
         }
+        
         _text.text = "";
         yield return new WaitForSeconds(1.8f);
+        GameManager.Instance.livePlayer?.Invoke();
+        GameManager.Instance.SpawnEnemy?.Invoke();
+        yield return new WaitForSeconds(0.3f);
         _isRestart = true;
     }
 

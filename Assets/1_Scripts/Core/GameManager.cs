@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PoolingListSO _initList = null;
 
     public Action livePlayer {get;set;}
+    public Action SpawnEnemy {get;set;}
 
+    [field:SerializeField]
+    public Vector3 SpawnPos {get;} = new Vector3(-9.44f,-3.18f,0);
     private Transform _playerTrm;
     public Transform PlayerTrm
     {

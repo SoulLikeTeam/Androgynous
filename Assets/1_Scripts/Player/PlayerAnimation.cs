@@ -1,6 +1,7 @@
 
 public class PlayerAnimation : AgentAnimation
 {
+
     public override void AnimatePlayer(float velocity,bool value)
     {
         SetWalkAnimation(velocity > 0&& !value);

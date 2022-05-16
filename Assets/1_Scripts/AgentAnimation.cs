@@ -18,8 +18,13 @@ public class AgentAnimation : MonoBehaviour
     protected readonly int _attackHashStr = Animator.StringToHash("Attack");
     protected readonly int _attackModeHashStr = Animator.StringToHash("AttackMode");
 
+
     protected bool _isNotChangeFace = false;
-    public bool IsNotChangeFace {get{return _isNotChangeFace;} set{_isNotChangeFace = value;}}
+    public bool IsNotChangeFace 
+    {
+        get{return _isNotChangeFace;} 
+        set{_isNotChangeFace = value;}
+    }
 
     private void Awake()
     {
