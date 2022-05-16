@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private PoolingListSO _initList = null;
 
+    public Action livePlayer {get;set;}
+
     private Transform _playerTrm;
     public Transform PlayerTrm
     {
@@ -29,7 +31,8 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         PoolManager.Instance =  new PoolManager(transform);
-
+        UIManager.Instance = new UIManager();
+        
         CreatePool();
     }
 

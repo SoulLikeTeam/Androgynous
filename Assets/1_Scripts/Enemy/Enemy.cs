@@ -64,8 +64,10 @@ public class Enemy : PoolableMono ,IAgent ,IHittable ,IKnockBack
         _enemyAnimation = GetComponentInChildren<EnemyAnimation>();
     }
     private void Start() {
+        GameManager.Instance.livePlayer += Die;
         Health = _enemyData.maxHealth;
     }
+
     public void PerformAttack(bool value,int mode)
     {
         if(!_isDead)

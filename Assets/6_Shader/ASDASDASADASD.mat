@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerGrow
-  m_Shader: {fileID: -6465566751694194690, guid: b40cc8626fce07e4fa7117e2acc9cb49, type: 3}
+  m_Name: ASDASDASADASD
+  m_Shader: {fileID: -6465566751694194690, guid: 2eded523c8c7a1f47ad9edc4b888faa1, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,16 +19,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _0:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Emission:
-        m_Texture: {fileID: 2800000, guid: 82e54d42b2b549e47ba93dcda5b01fbc, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ea425d8e5be63af45a9fbb596a0be874, type: 3}
+        m_Texture: {fileID: 2800000, guid: 71274d52a4df4ce4c917fc64a9178510, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -43,10 +35,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _MakeSolidColor: 0
+    m_Floats: []
     m_Colors:
-    - Color_a3bf3dd2333d43d28210e0f5a429a565: {r: 0.5377358, g: 0.5144001, b: 0.5144001, a: 0}
-    - _Color: {r: 0.011091871, g: 1.0093603, b: 2.828427, a: 0}
-    - _SolidColor: {r: 1, g: 1, b: 1, a: 0}
+    - Vector2_382ec54030e7464dbdc5dafd8189336f: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

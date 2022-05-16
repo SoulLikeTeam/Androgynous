@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour, IAgent, IHittable , IKnockBack
 {
+    [SerializeField]
+    private PlayerStatusSO _playerStatusSO;
     private AgentMovement _agentMovement;
     private PlayerAnimation _playerAnimation;
     private PlayerAttack _playerAttack;
@@ -27,8 +29,11 @@ public class Player : MonoBehaviour, IAgent, IHittable , IKnockBack
         HitPoint = damageDealer.transform.position;
         OnGetHit?.Invoke();
 
+        UIManager.Instance.UpdateHpGauge((float)Health/_playerStatusSO.playerMaxHealth);
+
         if(Health <= 0)
         {
+            UIManager.Instance.PlayDaedAction();
             OnDie?.Invoke();
         }
     }
@@ -44,6 +49,6 @@ public class Player : MonoBehaviour, IAgent, IHittable , IKnockBack
         _playerAnimation = GetComponent<PlayerAnimation>();
         _playerAttack = GetComponent<PlayerAttack>();
 
-        Health = 100;
+        Health = _playerStatusSO.playerMaxHealth;
     }
 }

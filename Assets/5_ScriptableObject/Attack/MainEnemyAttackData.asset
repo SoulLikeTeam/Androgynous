@@ -18,7 +18,7 @@ MonoBehaviour:
   - animationName: Attack1
     boxMin: {x: 0, y: 2}
     boxMax: {x: 3, y: 1}
-    damage: 26
+    damage: 20
     attackTime: 0
     criticalChance: 10
     staggerValue: 10
@@ -34,7 +34,7 @@ MonoBehaviour:
   - animationName: Attack3
     boxMin: {x: 0, y: 2}
     boxMax: {x: 2.3, y: 2.5}
-    damage: 9
+    damage: 10
     attackTime: 0
     criticalChance: 10
     staggerValue: 10
