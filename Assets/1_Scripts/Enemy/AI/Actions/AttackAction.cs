@@ -7,12 +7,16 @@ public class AttackAction : AIAction
     public override void TakeAction()
     {
         _aimovementData.direction = Vector2.zero;
-        _aimovementData.pointOfInterest = _enemyBrain.target.position;
-
+        _aimovementData.pointOfInterest = _enemyBrain.target.position - transform.position;
+        
+    
          _enemyBrain.Move(_aimovementData.direction,_aimovementData.pointOfInterest);
         _aiActionData.attack = true;
 
-        _enemyBrain.Attack(0);
+        GameManager.Instance.CallWaitForSeconds(1,() => {
+            _aiActionData.attack = false;
+        });
 
+        _enemyBrain.Attack(0);
     }
 }

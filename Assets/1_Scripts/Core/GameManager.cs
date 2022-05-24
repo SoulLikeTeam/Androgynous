@@ -27,11 +27,15 @@ public class GameManager : MonoBehaviour
         }
     }   
 
+    [SerializeField]
+    private GameObject _gameMenu = null;
+
     private void Awake() 
     {
         if (Instance != null)
             Debug.LogError("Multiple GameManager is running");
         Instance = this;
+
 
         PoolManager.Instance =  new PoolManager(transform);
         UIManager.Instance = new UIManager();
@@ -39,9 +43,36 @@ public class GameManager : MonoBehaviour
         CreatePool();
     }
 
+    private void Start() {
+        _gameMenu.SetActive(false);
+    }
+    
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(!_gameMenu.activeSelf)
+            {
+                _gameMenu.SetActive(true);
+            }
+            else
+            {
+                _gameMenu.SetActive(false);
+            }
+        }
+    }
+
     private void CreatePool()
     {
         foreach (PoolingPair pair in _initList.list)
             PoolManager.Instance.CreatePool(pair.prefab, pair.poolCnt);
     }
+
+    //코루틴 메니저
+    public void CallWaitForOneFrame(Action act) { StartCoroutine(DoCallWaitForOneFrame(act)); } 
+    public void CallWaitForSeconds(float seconds, Action act) { 
+        StopAllCoroutines();
+        StartCoroutine(DoCallWaitForSeconds(seconds, act)); 
+    } 
+    private IEnumerator DoCallWaitForOneFrame(Action act) { yield return 0; act(); } 
+    private IEnumerator DoCallWaitForSeconds(float seconds, Action act) { yield return new WaitForSeconds(seconds); act();}
 }

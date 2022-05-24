@@ -10,7 +10,7 @@ public class BoxDecision : AIDecision
         Vector2 vec =  _enemyBrain.target.position - transform.position;
         vec.x = Mathf.Abs(vec.x);
         
-        if(vec.x<distanceMeasurementVec.x&&vec.y<distanceMeasurementVec.y)
+        if(vec.y>distanceMeasurementVec.y)
         {   
             Debug.Log(vec);
             return true;

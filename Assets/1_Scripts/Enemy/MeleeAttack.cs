@@ -5,13 +5,16 @@ using UnityEngine;
 public class MeleeAttack : EnemyAttack
 {
     private int _attackMode = 0;
+    private float _randomAttackTime = 0;
     public override void OnAttack(int mode)
     {
         if(!_waitBeforeNextAttack)
         {
             _attackMode = mode;
+            _randomAttackTime = Random.Range(-2,2) + _attackData.afterCastDelay;
+            _randomAttackTime = _randomAttackTime < 0 ? 0 : _randomAttackTime;
             _agentAnimation.PlayAttackAnimation(mode+1);
-            StartCoroutine(WaitBeforeAttackCoroutine(_attackData.afterCastDelay));
+            StartCoroutine(WaitBeforeAttackCoroutine(_randomAttackTime));
         }
     }
 

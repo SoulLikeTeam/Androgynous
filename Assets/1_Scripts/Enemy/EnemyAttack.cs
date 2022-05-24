@@ -30,6 +30,7 @@ public abstract class EnemyAttack : Attack
     public void Reset()
     {
         StopCoroutine(WaitBeforeAttackCoroutine(1));
+        _waitBeforeNextAttack = false;
     }
     public Transform GetTarget()
     {

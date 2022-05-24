@@ -74,5 +74,9 @@ public class AgentAnimation : MonoBehaviour
         {
             _agentAnimator.transform.localScale = new Vector3(-1f, 1f, 1f);
         }
+        else
+        {
+            
+        }
     }
 }

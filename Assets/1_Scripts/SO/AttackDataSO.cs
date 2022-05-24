@@ -21,7 +21,7 @@ public class AttackData
 [CreateAssetMenu(menuName ="SO/Attack/AttackData")]
 public class AttackDataSO : ScriptableObject
 {
-    [Range(0.1f,5)]
+    [Range(0.1f,10)]
     public float afterCastDelay = 1f;
     [Range(1,6)]
     public int assailCount = 1;

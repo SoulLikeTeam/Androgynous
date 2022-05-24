@@ -29,11 +29,11 @@ public class Enemy : PoolableMono ,IAgent ,IHittable ,IKnockBack
     {
         if(_isDead) return;
         float critical = Random.Range(1,100);
-        bool isCritial = false;
+        //bool isCritial = false;
 
         if(critical<criticalChance)
         {
-            isCritial = true;
+            //isCritial = true;
             damage = damage * 2;
         }
 
@@ -81,6 +81,7 @@ public class Enemy : PoolableMono ,IAgent ,IHittable ,IKnockBack
         _isDead = false;
         _agentMovement.enabled = true;
         _enemyAttack.Reset();
+        _enemyAnimation.LiveEnemy();
     }
 
     public void Die()

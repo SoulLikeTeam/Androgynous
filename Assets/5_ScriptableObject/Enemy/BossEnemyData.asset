@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140cab7502c959146b32e356e1b31abc, type: 3}
+  m_Name: BossEnemyData
+  m_EditorClassIdentifier: 
+  enemyName: BossEnemy
+  prefab: {fileID: 888021811878217312, guid: c1f6fc427eeb5b84b92014cf4c6d8511, type: 3}
+  maxHealth: 20

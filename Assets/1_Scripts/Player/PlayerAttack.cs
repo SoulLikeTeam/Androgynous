@@ -70,7 +70,7 @@ public class PlayerAttack : Attack
         
         Vector2 centerVec = (new Vector2(maxVec.x-minVec.x,maxVec.y-minVec.y) * 0.5f)+(Vector2)transform.position;
         Collider2D col = Physics2D.OverlapBox(centerVec,new Vector2(Mathf.Abs(maxVec.x),maxVec.y),0,_layer);
-        Debug.Log(centerVec+" max "+maxVec);
+        //Debug.Log(centerVec+" max "+maxVec);
         
         if(col != null)
         {

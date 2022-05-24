@@ -27,14 +27,13 @@ public class EnemyAiBrain : MonoBehaviour, IAgnetInput
 
     public void Attack(int mode)
     {   
-
         OnAttackeyPress?.Invoke(true,mode);
     }
 
     public void Move(Vector2 moveDirection,Vector2 targetPos)
     {
         OnMovementKeyPress?.Invoke(new Vector2(moveDirection.x,0));
-        OnFaceDirection?.Invoke(moveDirection.x);
+        OnFaceDirection?.Invoke(targetPos.x);
     }
 
     public void ChangeState(AIState state)

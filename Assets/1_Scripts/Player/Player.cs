@@ -39,6 +39,7 @@ public class Player : MonoBehaviour, IAgent, IHittable , IKnockBack
         if(Health <= 0)
         {
             _isDead = true;
+            _playerAnimation.IsNotChangeFace = true;
             UIManager.Instance.PlayDaedAction();
             OnDie?.Invoke();
         }
@@ -54,7 +55,7 @@ public class Player : MonoBehaviour, IAgent, IHittable , IKnockBack
 
     private void Awake() {
         _agentMovement = GetComponent<AgentMovement>();
-        _playerAnimation = GetComponent<PlayerAnimation>();
+        _playerAnimation = GetComponentInChildren<PlayerAnimation>();
         _playerAttack = GetComponent<PlayerAttack>();
 
         
@@ -73,6 +74,7 @@ public class Player : MonoBehaviour, IAgent, IHittable , IKnockBack
     {
         Init();
         gameObject.transform.position = GameManager.Instance.SpawnPos;
+        _playerAnimation.IsNotChangeFace = false;
         _agentMovement.enabled = true;
         _playerAttack.enabled = true;
     }
