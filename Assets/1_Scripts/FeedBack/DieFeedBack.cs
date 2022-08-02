@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class DieFeedBack : FeedBack
 {
     [SerializeField]
-    private float _waitfoeTime;
+    private float _waitforeTime;
 
     public UnityEvent DeathCallBack;
     public override void CompletePrevFeedBack()
@@ -21,7 +21,8 @@ public class DieFeedBack : FeedBack
 
     private IEnumerator DieAnimation()
     {
-        yield return new WaitForSeconds(_waitfoeTime);
+
+        yield return new WaitForSeconds(_waitforeTime);
         DeathCallBack?.Invoke();
     }
 }

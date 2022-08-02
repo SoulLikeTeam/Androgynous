@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 231091195}
   - component: {fileID: 231091197}
-  - component: {fileID: 231091196}
+  - component: {fileID: 72651782598965036}
+  - component: {fileID: 8978606167869817526}
   m_Layer: 0
   m_Name: TransitionChase
   m_TagString: Untagged
@@ -45,10 +46,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decisions:
-  - {fileID: 231091196}
-  positiveState: {fileID: 0}
-  negativeState: {fileID: 8843623906271416592}
---- !u!114 &231091196
+  - {fileID: 8978606167869817526}
+  - {fileID: 72651782598965036}
+  positiveState: {fileID: 8843623906271416592}
+  negativeState: {fileID: 0}
+--- !u!114 &72651782598965036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,10 +59,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 231091194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7168561d748329e45bdc853d9af1a4ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a205b4a9714eaa4d93647dc5f0d3a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 1.5
+--- !u!114 &8978606167869817526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231091194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e46e0b63c86a341a5f854f02aac2a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distance: 1.5
 --- !u!1 &579000371
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +85,8 @@ GameObject:
   m_Component:
   - component: {fileID: 579000372}
   - component: {fileID: 579000375}
-  - component: {fileID: 579000374}
+  - component: {fileID: 8478391173530966647}
+  - component: {fileID: 2076860329507505708}
   m_Layer: 0
   m_Name: TransitionChase
   m_TagString: Untagged
@@ -106,10 +121,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decisions:
-  - {fileID: 579000374}
-  positiveState: {fileID: 0}
-  negativeState: {fileID: 8843623906271416592}
---- !u!114 &579000374
+  - {fileID: 2076860329507505708}
+  - {fileID: 8478391173530966647}
+  positiveState: {fileID: 8843623906271416592}
+  negativeState: {fileID: 0}
+--- !u!114 &8478391173530966647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,10 +134,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 579000371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7168561d748329e45bdc853d9af1a4ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a205b4a9714eaa4d93647dc5f0d3a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 1.5
+--- !u!114 &2076860329507505708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579000371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e46e0b63c86a341a5f854f02aac2a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distance: 1.5
 --- !u!1 &1437930063
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +397,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 1.5
+--- !u!1 &1262211060968095861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7341304536440225120}
+  - component: {fileID: 403172709610331818}
+  - component: {fileID: 7047224211592710857}
+  m_Layer: 7
+  m_Name: FeddbackDeath
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7341304536440225120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262211060968095861}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4510450580741691404}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &403172709610331818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262211060968095861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 954cef77f2c37ed478fb8031c04756e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _feedbackToPlay:
+  - {fileID: 7047224211592710857}
+--- !u!114 &7047224211592710857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262211060968095861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7512bc20aef59734db7d858d9b4451e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitforeTime: 3
+  DeathCallBack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8704295135119907832}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3715685736943022058
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,6 +942,7 @@ Transform:
   - {fileID: 4510450579369193250}
   - {fileID: 6745684306955477944}
   - {fileID: 1640024871}
+  - {fileID: 7341304536440225120}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -954,6 +1057,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _currentState: {fileID: 6421338776258128345}
+  basePosition: {fileID: 0}
   target: {fileID: 0}
 --- !u!114 &8704295135119907832
 MonoBehaviour:
@@ -998,6 +1102,18 @@ MonoBehaviour:
       - m_Target: {fileID: 902781003074844091}
         m_TargetAssemblyTypeName: AgentAnimation, Assembly-CSharp
         m_MethodName: PlayDeathAnimation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 403172709610331818}
+        m_TargetAssemblyTypeName: FeedBackPlayer, Assembly-CSharp
+        m_MethodName: PlayFeedBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

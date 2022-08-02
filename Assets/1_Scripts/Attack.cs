@@ -18,16 +18,11 @@ public abstract class Attack : MonoBehaviour
 
     protected bool _canAttack = true;
     protected bool _isAttack = true;
-    private void Awake() {
+    protected virtual void Awake() {
         _agentAnimation = GetComponentInChildren<AgentAnimation>();
 
-        AwakeChild();
     }
 
-    protected virtual void AwakeChild()
-    {
-        //no
-    }
 
     private void Start() {
         _lastAttackTime = Time.time;

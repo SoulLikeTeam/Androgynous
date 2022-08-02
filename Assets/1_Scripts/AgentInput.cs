@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,13 +16,19 @@ public class AgentInput : MonoBehaviour ,IAgnetInput
     public UnityEvent<bool> OnJumpKeyPress {get;set;}
     [field:SerializeField]
     public UnityEvent<float> OnRunKeyPress {get;set;}
+    [field: SerializeField]
+    public UnityEvent OnEvasiveStepKeyPress { get; set; }
     private void Update() {
         GetMovementInput();
         GetAttackInput();
         GetFaceDirInput();
         GetJumpInput();
         GetRunInput();
+        GetEvasiveStepInput();
     }
+
+
+
     private void GetMovementInput()
     {
         OnMovementKeyPress?.Invoke(
@@ -30,9 +37,28 @@ public class AgentInput : MonoBehaviour ,IAgnetInput
     }
     private void GetAttackInput()
     {
-        OnAttackeyPress?.Invoke(
-            Input.GetButtonDown("Fire1"),0
-        );
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            if (Input.GetMouseButton(0))
+            {
+                OnAttackeyPress?.Invoke(true, 1);
+            }
+            else if(Input.GetMouseButtonUp(0))
+            {
+                OnAttackeyPress?.Invoke(false, 1);
+            }
+        }
+        else
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                OnAttackeyPress?.Invoke(true, 0);
+            }
+            else
+            {
+                OnAttackeyPress?.Invoke(false, 0);
+            }
+        }
     }
     private void GetFaceDirInput()
     {
@@ -43,7 +69,7 @@ public class AgentInput : MonoBehaviour ,IAgnetInput
     private void GetJumpInput()
     {
         OnJumpKeyPress?.Invoke(
-            Input.GetButtonDown("Jump")
+            Input.GetKeyDown(KeyCode.W)
         );
     }
     private void GetRunInput()
@@ -51,6 +77,13 @@ public class AgentInput : MonoBehaviour ,IAgnetInput
         OnRunKeyPress?.Invoke(
             Input.GetAxisRaw("Fire3")
         );
+    }
+    private void GetEvasiveStepInput()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            OnEvasiveStepKeyPress?.Invoke();
+        }
     }
 
 }

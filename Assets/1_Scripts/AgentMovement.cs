@@ -17,6 +17,8 @@ public class AgentMovement : MonoBehaviour
 
     private Coroutine _knockBackCo = null;
 
+    protected bool _isStep = false;
+
     protected float _currentVelocity = 3;
     protected float _addVelocity = 1;
     protected Vector2 _movementDirection;
@@ -108,6 +110,24 @@ public class AgentMovement : MonoBehaviour
         }
     }
 
+    public void EvasiveStep()
+    {
+        if (_isStep) return;
+        if (!_isKnockBack)
+        {
+            _isKnockBack = true;
+            _isStep = true;
+            _knockBackCo = StartCoroutine(KnockBackCoroutine(new Vector2(-_movementDirection.x,0), 15, 0.2f));
+            StartCoroutine(StepBeforeTime(1.5f));
+        }
+    }
+
+    private IEnumerator StepBeforeTime(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        _isStep = false;
+    }
+
     private void FixedUpdate()
     {
         if(StopMovement())return;
@@ -142,6 +162,14 @@ public class AgentMovement : MonoBehaviour
             _knockBackCo = StartCoroutine(KnockBackCoroutine(direction, power, duration));
         }
     }
+    public void AddFoceMovement(float power,float duration)
+    {
+        if (!_isKnockBack)
+        {
+            _isKnockBack = true;
+            _knockBackCo = StartCoroutine(KnockBackCoroutine(_movementDirection, power, duration));
+        }
+    }
     
     public void ResetKnockBack()
     {
@@ -155,6 +183,7 @@ public class AgentMovement : MonoBehaviour
     IEnumerator KnockBackCoroutine(Vector2 direction, float power, float duration)
     {
         direction.Normalize();
+        _rigid.velocity = Vector2.zero;
         _rigid.AddForce(new Vector2(direction.x ,0) * power, ForceMode2D.Impulse);
         yield return new WaitForSeconds(duration);
         ResetKnockBackParam();

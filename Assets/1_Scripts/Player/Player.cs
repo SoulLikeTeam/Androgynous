@@ -11,6 +11,7 @@ public class Player : MonoBehaviour, IAgent, IHittable , IKnockBack
     private PlayerAnimation _playerAnimation;
     private PlayerAttack _playerAttack;
 
+    private bool _isInvincible = false;
     private bool _isDead = false;
 
     #region Interface
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour, IAgent, IHittable , IKnockBack
 
     public void GetHit(int damage, float criticalChance, GameObject damageDealer)
     {
-        if(_isDead) return;
+        if(_isDead||_isInvincible) return;
 
         Health -= damage;
 
@@ -77,5 +78,15 @@ public class Player : MonoBehaviour, IAgent, IHittable , IKnockBack
         _playerAnimation.IsNotChangeFace = false;
         _agentMovement.enabled = true;
         _playerAttack.enabled = true;
+    }
+    public void InvincibleFrame()
+    {
+        _isInvincible = true;
+        StartCoroutine(InvincibleFrameCoroutine(1f));
+    }
+    protected IEnumerator InvincibleFrameCoroutine(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        _isInvincible = false;
     }
 }

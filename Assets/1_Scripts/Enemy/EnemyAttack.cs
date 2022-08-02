@@ -20,9 +20,9 @@ public abstract class EnemyAttack : Attack
 
     public UnityEvent AttackFeedback;
 
-
-    protected override void AwakeChild()
+    protected override void Awake()
     {
+        base.Awake();
         _enemy = GetComponent<Enemy>();
         _enemyAiBrain = GetComponent<EnemyAiBrain>();
         _layer = LayerMask.GetMask("Player");

@@ -34,7 +34,7 @@ MonoBehaviour:
   - animationName: Attack3
     boxMin: {x: 0, y: 2}
     boxMax: {x: 1.5, y: 2.5}
-    damage: 1
+    damage: 3
     attackTime: 0.1
     criticalChance: 30
     staggerValue: 50

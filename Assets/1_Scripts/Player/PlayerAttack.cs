@@ -5,29 +5,71 @@ using UnityEngine;
 public class PlayerAttack : Attack
 {
     private AgentMovement _agentMovement = null;
+    protected PlayerAnimation _playerAnimation = null;
 
-    protected bool _isInput = true;
+    protected float _attackBeforeMoveTimer = 0;
+
+    private float _heavyAttackTime = 0;
+
+    protected bool _isInput = false;
+    protected bool _isHeavyAttack = false;
+    protected bool _isCritical = false;
+    protected bool _isAttackBeforeMovement = false;
+
     private LayerMask _layer;
 
-    protected override void AwakeChild()
+    protected override void Awake()
     {
+        _playerAnimation = GetComponentInChildren<PlayerAnimation>();
         _agentMovement = GetComponent<AgentMovement>();
-        _layer = LayerMask.GetMask("Enemy"); 
+        _layer = LayerMask.GetMask("Enemy");
     }
     private void Update() {
         OnAttack(0);
+        HeavyAttack();
     }
     public void IsInputAttackKey(bool value,int mode)
     {
-        _isInput = value;
+        if(mode==0)
+        {
+            _isInput = value;
+            _isHeavyAttack = false;
+        }
+        else if(mode==1)
+        {
+            _isHeavyAttack = value;
+            _isInput = false;
+        }
+       
     }
-
+    protected void HeavyAttack()
+    {
+        if(_isHeavyAttack)
+        {
+            //Debug.Log("Â÷Â¡!!!");
+            _playerAnimation.HeavyAttack();
+            _heavyAttackTime += Time.deltaTime;
+            StopMovement();
+        }
+        else if(_heavyAttackTime > 1)
+        {
+            Debug.Log("°­ °ø°Ý!!");
+            _heavyAttackTime = 0;
+            _isCritical = true;
+            SetAttack(3);
+        }
+        else
+        {
+            PlayMovement();
+            _heavyAttackTime = 0;
+        }
+    }
     public override void OnAttack(int mode)
     {
         if(!_agentMovement.IsJump) return;
         if(_isInput&&!_isAttack&&Time.time >= _lastAttackTime + _attackData.afterCastDelay)
         {
-            SetAttack();
+            SetAttack(0);
             return;
         }
 
@@ -41,18 +83,14 @@ public class PlayerAttack : Attack
                 _lastAttackTime = Time.time;
 
                 _isAttack =false;
-                _agentAnimation.StopAttackAnimation();
+                _playerAnimation.StopAttackAnimation();
                 PlayMovement();
             }
             else if(_isInput&&_canAttack)
             {
-                SetAttack();
+                SetAttack(0);
             }
-        }
 
-        if(_isAttack)
-        {
-            StopMovement();
         }
     }
     public void CheckDamaged()
@@ -81,7 +119,15 @@ public class PlayerAttack : Attack
             Vector2 dir = col.transform.position - transform.position;
 
             //Debug.Log(_assailCount);
-            hittable.GetHit(_attackData.attackDatas[_assailCount-1].damage,_attackData.attackDatas[_assailCount-1].criticalChance,gameObject);
+            if(_isCritical)
+            {
+                hittable.GetHit((int)(_attackData.attackDatas[_assailCount - 1].damage*2f), _attackData.attackDatas[_assailCount - 1].criticalChance, gameObject);
+            }
+            else
+            {
+                hittable.GetHit(_attackData.attackDatas[_assailCount - 1].damage, _attackData.attackDatas[_assailCount - 1].criticalChance, gameObject);
+            }
+            
 
             knockBack.KnockBack(dir,_attackData.attackDatas[_assailCount-1].knockBackValue,(float)_attackData.attackDatas[_assailCount-1].staggerValue*0.01f);
         }
@@ -89,30 +135,43 @@ public class PlayerAttack : Attack
     }
     public void MotionEnd()
     {
+        _isCritical = false;
         _canAttack = true;
     }
-    private void SetAttack()
+    private void SetAttack(int type)
     {
-        _isAttack = true;
-        _assailCount++;
-        if(_assailCount>=_attackData.assailCount+1)
+        float foce = 8;
+        if(type>0)
+        {
+            foce = 15;
+            _isAttack = true;
+            _assailCount = type;
+        }
+        else
+        {
+            _isAttack = true;
+            _isInput = false;
+            _assailCount++;
+        }
+        if (_assailCount >= _attackData.assailCount+1)
         {
             return;
         }
 
+        _agentMovement.AddFoceMovement(foce, 0.2f);
         _canAttack = false;
-        _attackTimer = _attackData.attackDatas[_assailCount-1].attackTime;
-        _agentAnimation.PlayAttackAnimation(_assailCount);
+        _attackTimer = _attackData.attackDatas[_assailCount - 1].attackTime;
+        _playerAnimation.PlayAttackAnimation(_assailCount);
         StopMovement();
     }
     private void StopMovement()
     {
         _agentMovement.StopMove = true;
-        _agentAnimation.IsNotChangeFace = true;
+        _playerAnimation.IsNotChangeFace = true;
     }
     private void PlayMovement()
     {
         _agentMovement.StopMove = false;
-        _agentAnimation.IsNotChangeFace = false;
+        _playerAnimation.IsNotChangeFace = false;
     }
 }

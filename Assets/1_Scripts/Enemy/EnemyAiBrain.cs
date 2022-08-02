@@ -19,12 +19,24 @@ public class EnemyAiBrain : MonoBehaviour, IAgnetInput
     [SerializeField]
     private AIState _currentState;
 
+    private AIActionData _aiActionData;
+
+    public Transform basePosition = null;
+
     public Transform target;
 
+    private void Awake()
+    {
+        _aiActionData = transform.Find("AI").GetComponent<AIActionData>();
+    }
     private void Start() {
         target = GameManager.Instance.PlayerTrm;
     }
 
+    public void SetAttackState(bool state)
+    {
+        _aiActionData.attack = state;
+    }
     public void Attack(int mode)
     {   
         OnAttackeyPress?.Invoke(true,mode);

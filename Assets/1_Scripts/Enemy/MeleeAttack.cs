@@ -10,6 +10,7 @@ public class MeleeAttack : EnemyAttack
     {
         if(!_waitBeforeNextAttack)
         {
+            _enemyAiBrain.SetAttackState(true);
             _attackMode = mode;
             _randomAttackTime = Random.Range(-2,2) + _attackData.afterCastDelay;
             _randomAttackTime = _randomAttackTime < 0 ? 0 : _randomAttackTime;

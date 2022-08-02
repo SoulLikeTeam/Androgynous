@@ -108,6 +108,10 @@ PrefabInstance:
       propertyPath: distance
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1262211060968095861, guid: 419e77b8222f14b42843872a80071451, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1745248935142422344, guid: 419e77b8222f14b42843872a80071451, type: 3}
       propertyPath: negativeState
       value: 
@@ -119,6 +123,10 @@ PrefabInstance:
     - target: {fileID: 1745248935142422344, guid: 419e77b8222f14b42843872a80071451, type: 3}
       propertyPath: decisions.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745248935142422344, guid: 419e77b8222f14b42843872a80071451, type: 3}
+      propertyPath: decisions.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1884062619081577524, guid: 419e77b8222f14b42843872a80071451, type: 3}
       propertyPath: distance
@@ -263,6 +271,10 @@ PrefabInstance:
     - target: {fileID: 5788473450173218956, guid: 419e77b8222f14b42843872a80071451, type: 3}
       propertyPath: decisions.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788473450173218956, guid: 419e77b8222f14b42843872a80071451, type: 3}
+      propertyPath: decisions.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6834135484225963949, guid: 419e77b8222f14b42843872a80071451, type: 3}
       propertyPath: distance

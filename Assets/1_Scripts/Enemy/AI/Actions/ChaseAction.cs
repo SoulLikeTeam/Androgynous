@@ -6,7 +6,6 @@ public class ChaseAction : AIAction
 {
     public override void TakeAction()
     {
-        if(_aiActionData.attack)return;
         Vector2 direction = _enemyBrain.target.position - transform.position;
         _aimovementData.direction = direction.normalized;
         _aimovementData.pointOfInterest = _enemyBrain.target.position - transform.position;
