@@ -10,9 +10,12 @@ public class Enemy : PoolableMono ,IAgent ,IHittable ,IKnockBack
     public EnemyDataSO EnemyData => _enemyData;
 
     private bool _isDead = false;
+    private bool _isNeutral = false;
+
     private AgentMovement _agentMovement;
     private EnemyAnimation _enemyAnimation;
     private EnemyAttack _enemyAttack;
+    private AIActionData _aiActionData;
 
     #region 인테페이스
 
@@ -27,7 +30,13 @@ public class Enemy : PoolableMono ,IAgent ,IHittable ,IKnockBack
     public Vector3 HitPoint {get;private set;}
     public void GetHit(int damage,float criticalChance,GameObject damageDealer)
     {
-        if(_isDead) return;
+       if(_isDead) return;
+        if(_enemyData.neutralActive)
+            if (!_isNeutral && _aiActionData.attack == false)
+            {
+                _enemyAnimation.GuardAnimation();
+                return;
+            }
         float critical = Random.Range(1,100);
         //bool isCritial = false;
 
@@ -39,6 +48,10 @@ public class Enemy : PoolableMono ,IAgent ,IHittable ,IKnockBack
 
         Health -= damage;
         HitPoint = damageDealer.transform.position;
+
+        GameObject ob = Instantiate(_enemyData.damagedEffect, transform);
+        ob.transform.position = transform.position;
+        
 
         OnGetHit?.Invoke();
 
@@ -62,10 +75,26 @@ public class Enemy : PoolableMono ,IAgent ,IHittable ,IKnockBack
         _agentMovement = GetComponent<AgentMovement>();
         _enemyAttack = GetComponent<EnemyAttack>();
         _enemyAnimation = GetComponentInChildren<EnemyAnimation>();
+        _aiActionData = transform.Find("AI").GetComponent<AIActionData>();
     }
     private void Start() {
         GameManager.Instance.livePlayer += Die;
         Health = _enemyData.maxHealth;
+    }
+    private void OnDisable()
+    {
+        Reset();
+    }
+    public void NeutralEnemy()
+    {
+        _isNeutral = true;
+        Debug.Log("무력화 ㅠㅠ");
+        StartCoroutine(WaitForTimeNeutral(3));
+    }
+    private IEnumerator WaitForTimeNeutral(float time)
+    {
+        yield return new WaitForSeconds(time);
+        _isNeutral = false;
     }
 
     public void PerformAttack(bool value,int mode)
@@ -79,6 +108,7 @@ public class Enemy : PoolableMono ,IAgent ,IHittable ,IKnockBack
     {
         Health = _enemyData.maxHealth;
         _isDead = false;
+        _isNeutral = false;
         _agentMovement.enabled = true;
         _enemyAttack.Reset();
         _enemyAnimation.LiveEnemy();

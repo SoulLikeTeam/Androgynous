@@ -176,6 +176,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8704295135119907832, guid: 419e77b8222f14b42843872a80071451, type: 3}
+      propertyPath: _enemyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 21865352fd067594ea67844ca2225a5c, type: 2}
+    - target: {fileID: 8704295135119907832, guid: 419e77b8222f14b42843872a80071451, type: 3}
       propertyPath: <OnDie>k__BackingField.m_PersistentCalls.m_Calls.Array.size
       value: 4
       objectReference: {fileID: 0}

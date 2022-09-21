@@ -10,6 +10,7 @@ public class Player : MonoBehaviour, IAgent, IHittable , IKnockBack
     private AgentMovement _agentMovement;
     private PlayerAnimation _playerAnimation;
     private PlayerAttack _playerAttack;
+    private PlayerParry _playerParry;
 
     private bool _isInvincible = false;
     private bool _isDead = false;
@@ -29,6 +30,12 @@ public class Player : MonoBehaviour, IAgent, IHittable , IKnockBack
     public void GetHit(int damage, float criticalChance, GameObject damageDealer)
     {
         if(_isDead||_isInvincible) return;
+
+        if (_playerParry.CheckParryPoint(damageDealer))
+        {
+            _playerAnimation.ParryAniamtion();
+            return;
+        }
 
         Health -= damage;
 
@@ -58,8 +65,7 @@ public class Player : MonoBehaviour, IAgent, IHittable , IKnockBack
         _agentMovement = GetComponent<AgentMovement>();
         _playerAnimation = GetComponentInChildren<PlayerAnimation>();
         _playerAttack = GetComponent<PlayerAttack>();
-
-        
+        _playerParry = GetComponent<PlayerParry>();
     }
     private void Start() {
         GameManager.Instance.livePlayer += Die;

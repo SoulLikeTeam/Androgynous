@@ -133,6 +133,16 @@ public class PlayerAttack : Attack
         }
 
     }
+    public void MotionInit()
+    {
+        _attackTimer = 0;
+        _assailCount = 0;
+        _lastAttackTime = Time.time;
+
+        _isAttack = false;
+        _playerAnimation.StopAttackAnimation();
+        PlayMovement();
+    }
     public void MotionEnd()
     {
         _isCritical = false;

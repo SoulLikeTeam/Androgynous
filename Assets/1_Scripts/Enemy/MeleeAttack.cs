@@ -30,7 +30,7 @@ public class MeleeAttack : EnemyAttack
         Vector2 centerVec = (new Vector2(maxVec.x-minVec.x,maxVec.y-minVec.y) * 0.5f)+(Vector2)transform.position;
         if(Physics2D.OverlapBox(centerVec,new Vector2(Mathf.Abs(maxVec.x),maxVec.y),0,_layer))
         {
-            Debug.Log("Hit!!");
+            //Debug.Log("Hit!!");
             IHittable hittable = GetTarget().GetComponent<IHittable>();
             IKnockBack knockBack = GetTarget().GetComponent<IKnockBack>();
                 

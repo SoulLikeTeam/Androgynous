@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176f23907aaa97148a74a648bdd49ce8, type: 3}
   m_Name: PlayerAttackData
   m_EditorClassIdentifier: 
-  afterCastDelay: 0.4
+  afterCastDelay: 0.3
   assailCount: 3
   attackDatas:
   - animationName: Attack
@@ -34,7 +34,7 @@ MonoBehaviour:
   - animationName: Attack3
     boxMin: {x: 0, y: 2}
     boxMax: {x: 1.5, y: 2.5}
-    damage: 3
+    damage: 2
     attackTime: 0.1
     criticalChance: 30
     staggerValue: 50

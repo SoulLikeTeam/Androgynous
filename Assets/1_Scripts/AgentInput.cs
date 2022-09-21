@@ -18,6 +18,8 @@ public class AgentInput : MonoBehaviour ,IAgnetInput
     public UnityEvent<float> OnRunKeyPress {get;set;}
     [field: SerializeField]
     public UnityEvent OnEvasiveStepKeyPress { get; set; }
+    [field: SerializeField]
+    public UnityEvent OnParryKeyPress { get; set; }
     private void Update() {
         GetMovementInput();
         GetAttackInput();
@@ -25,10 +27,17 @@ public class AgentInput : MonoBehaviour ,IAgnetInput
         GetJumpInput();
         GetRunInput();
         GetEvasiveStepInput();
+        GetParryInput();
     }
 
 
-
+    private void GetParryInput()
+    {
+        if(Input.GetMouseButtonDown(1))
+        {
+            OnParryKeyPress?.Invoke();
+        }
+    }
     private void GetMovementInput()
     {
         OnMovementKeyPress?.Invoke(
@@ -69,7 +78,7 @@ public class AgentInput : MonoBehaviour ,IAgnetInput
     private void GetJumpInput()
     {
         OnJumpKeyPress?.Invoke(
-            Input.GetKeyDown(KeyCode.W)
+            Input.GetKeyDown(KeyCode.Space)
         );
     }
     private void GetRunInput()
@@ -80,10 +89,10 @@ public class AgentInput : MonoBehaviour ,IAgnetInput
     }
     private void GetEvasiveStepInput()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            OnEvasiveStepKeyPress?.Invoke();
-        }
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    OnEvasiveStepKeyPress?.Invoke();
+        //}
     }
 
 }

@@ -142,6 +142,12 @@ public class AgentMovement : MonoBehaviour
     }
     protected bool StopMovement()
     {
+        if(GameManager.Instance.IsEvent)
+        {
+            _currentVelocity = 0;
+            _rigid.velocity = Vector2.zero;
+            return true;
+        }
         if(_stopMove&&!_isKnockBack)
         {
             _currentVelocity = 0;

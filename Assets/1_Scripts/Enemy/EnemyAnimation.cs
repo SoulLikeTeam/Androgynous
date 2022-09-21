@@ -6,9 +6,14 @@ public class EnemyAnimation : AgentAnimation
 {
     private EnemyAiBrain _enemyAiBrain;
     protected readonly int _liveHashStr = Animator.StringToHash("Live");
+    protected readonly int _guardHashStr = Animator.StringToHash("Guard");
     protected override void ChildAwake()
     {
         _enemyAiBrain = GetComponentInParent<EnemyAiBrain>();
+    }
+    public void GuardAnimation()
+    {
+        _agentAnimator.SetTrigger(_guardHashStr);
     }
     public void LiveEnemy()
     {

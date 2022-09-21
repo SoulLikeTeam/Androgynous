@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a460b3b469c9546b25bebf77e7ec32, type: 3}
   m_Name: EnemyMovementData
   m_EditorClassIdentifier: 
-  maxSpeed: 2
+  maxSpeed: 4
   jumpForce: 10
   jumpCheckRadius: 0.45
   acceleration: 30

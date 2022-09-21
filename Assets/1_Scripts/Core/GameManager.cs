@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,11 +10,17 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private PoolingListSO _initList = null;
 
+    [SerializeField]
+    private RectTransform fade;
+
     public Action livePlayer {get;set;}
     public Action SpawnEnemy {get;set;}
 
     [field:SerializeField]
     public Vector3 SpawnPos {get;} = new Vector3(-9.44f,-3.18f,0);
+
+    public bool IsEvent;
+
     private Transform _playerTrm;
     public Transform PlayerTrm
     {
@@ -60,7 +67,16 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    public void FadeIn()
+    {
+        Sequence seq = DOTween.Sequence();
+        seq.Append(fade.DOAnchorPosY(0, 1.5f));
+    }
+    public void FadeOut()
+    {
+        Sequence seq = DOTween.Sequence();
+        seq.Append(fade.DOAnchorPosY(-1050, 1.5f));
+    }
     private void CreatePool()
     {
         foreach (PoolingPair pair in _initList.list)

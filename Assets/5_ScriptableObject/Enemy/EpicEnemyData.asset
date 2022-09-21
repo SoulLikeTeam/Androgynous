@@ -15,3 +15,4 @@ MonoBehaviour:
   enemyName: EpicEnemy
   prefab: {fileID: 4287638863890020652, guid: 36817a477d6ae8d4086b29f2352414c6, type: 3}
   maxHealth: 10
+  damagedEffect: {fileID: 4597482182573903306, guid: 4b4fde41e7a6c914b9ce023a4539b456, type: 3}

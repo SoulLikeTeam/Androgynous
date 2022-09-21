@@ -12,7 +12,7 @@ public class BoxDecision : AIDecision
         
         if(vec.y>distanceMeasurementVec.y)
         {   
-            Debug.Log(vec);
+            //Debug.Log(vec);
             return true;
         }
         return false;

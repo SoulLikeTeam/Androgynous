@@ -17,7 +17,6 @@ public class UpAttackAction : AIAction
         GameManager.Instance.CallWaitForSeconds(1,() => {
             _aiActionData.attack = false;
         });
-        Debug.Log("ATTack22222");
 
     }
 }

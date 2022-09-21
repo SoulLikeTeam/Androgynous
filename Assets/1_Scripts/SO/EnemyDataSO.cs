@@ -8,5 +8,8 @@ public class EnemyDataSO : ScriptableObject
     public string enemyName;
     public GameObject prefab;
     public int maxHealth;
+    public GameObject damagedEffect;
+
+    public bool neutralActive;
     
 }
